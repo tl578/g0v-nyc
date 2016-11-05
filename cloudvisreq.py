@@ -54,16 +54,12 @@ if __name__ == '__main__':
     else:
         for idx, resp in enumerate(response.json()['responses']):
             # save to JSON file
-            imgname = image_filenames[idx]
+            imgname = image_filenames[idx].split('.')[0]
             jpath = join(RESULTS_DIR, basename(imgname) + '.json')
             with open(jpath, 'w') as f:
                 datatxt = json.dumps(resp, indent=2)
-                print("Wrote", len(datatxt), "bytes to", jpath)
+                print "Wrote %d bytes to %s" % (len(datatxt), jpath)
                 f.write(datatxt)
     
-            print("---------------------------------------------")
             t = resp['textAnnotations'][0]
-            print("    Bounding Polygon:")
-            print(t['boundingPoly'])
-            print("    Text:")
             print(t['description'])
