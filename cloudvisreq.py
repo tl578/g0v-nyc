@@ -7,7 +7,7 @@ import requests
 
 ENDPOINT_URL = 'https://vision.googleapis.com/v1/images:annotate'
 RESULTS_DIR = 'jsons'
-if (os.path.exists(RESULTS_DIR) == None):
+if (os.path.exists(RESULTS_DIR) == 0):
     os.makedirs(RESULTS_DIR)
 
 def make_image_data_list(image_filenames):
